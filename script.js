@@ -88,39 +88,39 @@ var specialCharacters = [
     "Z"
   ];
 
-  
   // Function to prompt user for password options
   function getPasswordOptions() {
+    alert("Password must be a minimum of 8 characters");
+    alert("password can be a max of 128 characters");
     // Variable to store length of password from user input
     var length = parseInt(
         prompt("How many characters would you like your password to contain?")
-  );
-        
+    );   
+  }
+
     //Complete your function here...
     // Conditional statement to check if password length is a number. Prompts end if this evaluates false
-    if (length === numericCharacters && length >= 8 && length <= 128){
+    if (length === numericCharacters && length >= 8 && length <= 128);{
     // Conditional statement to check if password length is at least 8 characters long. Prompts end if this evaluates false
-    console.log("Generating passcode for you");
+    alert("Generating password");
     // Conditional statement to check if password length is less than 128 characters long. Prompts end if this evaluates false
 
     // Variable to store boolean regarding the inclusion of special, numeric , lowercase, uppercase characters
     
+    
     // Conditional statement to check if user does not include any types of characters.
-    else if ()
+    
     //Password generator should ends if all four variables evaluate to false
-    else {
-        console.log("Passcode length must meet requirements")
-    }
+
     return passwordOptions;
   }
-  
+
   // Function for getting a random element from an array
   //Complete your function here...
-  function charSet(characters){
-      for(var i=0; i < characters.length; i++){
+  function charSet(arr){
+      for(var i=0; i < arr.length; i++){
     
-      }
-  }
+   
         charSet(specialCharacters);
         charSet(numericCharacters);
         charSet(lowerCasedCharacters);
