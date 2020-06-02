@@ -88,51 +88,56 @@ var specialCharacters = [
     "Z"
   ];
 
-  // Function to prompt user for password options
-  function getPasswordOptions() {
     alert("Password must be a minimum of 8 characters");
     alert("password can be a max of 128 characters");
+  // Function to prompt user for password options
+  function getPasswordOptions ()
+  var passwordOptions = []
     // Variable to store length of password from user input
-    var length = parseInt(
+    var passwordOptions = parseInt(]
         prompt("How many characters would you like your password to contain?")
     );   
-  }
+      // booleans to store answers from the participant
+    passwordOptions.includeSpecialCharacter = confirm("Do you want to include a special character?");
+
+    passwordOptions.includeUppercaseCharacter = confirm("Do you want uppercase letters?");
+
+    passwordOptions.includelowercaseCharacter = confirm("Do you want lowercase letters?");
 
     //Complete your function here...
-    // Conditional statement to check if password length is a number. Prompts end if this evaluates false
-    if (length === numericCharacters && length >= 8 && length <= 128);{
-    // Conditional statement to check if password length is at least 8 characters long. Prompts end if this evaluates false
-    alert("Generating password");
-    // Conditional statement to check if password length is less than 128 characters long. Prompts end if this evaluates false
-
-    // Variable to store boolean regarding the inclusion of special, numeric , lowercase, uppercase characters
-    
-    
-    // Conditional statement to check if user does not include any types of characters.
-    
-    //Password generator should ends if all four variables evaluate to false
-
-    return passwordOptions;
-  }
-
-  // Function for getting a random element from an array
-  //Complete your function here...
-  function charSet(arr){
-      for(var i=0; i < arr.length; i++){
-    
+    // Conditional statement to check if password length is a number as well as greater than 8 and less than 128
+    if (isInteger(passwordOptions.length) &&
+    passwordOptions.length >= 8 &&
+    passwordOptions.length <= 128 ){
+        
+    }
    
-        charSet(specialCharacters);
-        charSet(numericCharacters);
-        charSet(lowerCasedCharacters);
-        charSet(upperCasedCharacters);
+    else {
+        alert("Password does not meet requirements")
+    }
+    return (passwordOptions);
+}
+ // function charSet(arr){
+      //used for loop to choose password characters
+   //   for (var i; i >= length.length; i++)
+     //    console.log("Generating password");
+     // }
+      //charSet(upperCasedCharacters);
+      //charSet(lowerCasedCharacters);
+      //charSet(numericCharacters);
+     // charSet(specialCharacters);
+    //}
+    
   // Function to generate password with user input
   function generatePassword() {
-    var options = getPasswordOptions();
+    var options = getPasswordOptions(
+      
+    
   
-    var result = [];
+    var result = [passwordOptions];
   
     //Complete your function here...
-  }
+    }
   
   // Get references to the #generate element
   var generateBtn = document.querySelector("#generate");
