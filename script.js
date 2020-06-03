@@ -91,12 +91,13 @@ var specialCharacters = [
     alert("Password must be a minimum of 8 characters");
     alert("password can be a max of 128 characters");
   // Function to prompt user for password options
-  function getPasswordOptions ()
-  var passwordOptions = []
+  function getPasswordOptions() 
+    var passwordOptions = []
     // Variable to store length of password from user input
-    var passwordOptions = parseInt(]
+    passwordOptions.length = parseInt(
         prompt("How many characters would you like your password to contain?")
-    );   
+    );    
+  
       // booleans to store answers from the participant
     passwordOptions.includeSpecialCharacter = confirm("Do you want to include a special character?");
 
@@ -104,7 +105,6 @@ var specialCharacters = [
 
     passwordOptions.includelowercaseCharacter = confirm("Do you want lowercase letters?");
 
-    //Complete your function here...
     // Conditional statement to check if password length is a number as well as greater than 8 and less than 128
     if (isInteger(passwordOptions.length) &&
     passwordOptions.length >= 8 &&
@@ -116,29 +116,48 @@ var specialCharacters = [
         alert("Password does not meet requirements")
     }
     return (passwordOptions);
+  
+ 
+function getRandomElement(arr){
+  //using equation to pull random characters from arrays
+  var arrayKey = (Math.floor(Math.random()* numericCharacters.length));
+    return arr[arrayKey]
+  
 }
- // function charSet(arr){
-      //used for loop to choose password characters
-   //   for (var i; i >= length.length; i++)
-     //    console.log("Generating password");
-     // }
-      //charSet(upperCasedCharacters);
-      //charSet(lowerCasedCharacters);
-      //charSet(numericCharacters);
-     // charSet(specialCharacters);
-    //}
-    
-  // Function to generate password with user input
-  function generatePassword() {
-    var options = getPasswordOptions(
-      
-    
-  
-    var result = [passwordOptions];
-  
-    //Complete your function here...
+
+   // Function to generate password with user input
+   function generatePassword() {
+    var password = ""
+    var options = getPasswordOptions()
+// i set this variable to an empty bracket so in the conditional i 
+//can check for multiple character types
+var availableCharacterTypes = [];
+    if (options.includeSpeciaCharacter) {
+     availableCharacterTypes() = specialCharacters;
     }
+    if (options.includeNumericCharacters) {
+     availableCharacterTypes() = numericCharacters;
+    }
+    if (options.lowerCasedCharacters) {
+      availableCharacterTypes() = lowerCasedCharacters;
+     }
+     if (options.upperCasedCharacters) {
+      availableCharacterTypes() = upperCasedCharacters;
+     }
   
+    var availableCharacterTypes = [
+    specialCharacters,
+    numericCharacters,
+    lowerCasedCharacters,
+    upperCasedCharacters
+     ];
+     for (var i = 0; i <= getPasswordOptions.length; i++) {
+      // getRandomElement(specialCharacters) = '@'
+      password += getRandomElement(getRandomElement(availableCharacterTypes));
+   }
+
+   return (password);
+}
   // Get references to the #generate element
   var generateBtn = document.querySelector("#generate");
   
