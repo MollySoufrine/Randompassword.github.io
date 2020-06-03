@@ -93,38 +93,33 @@ alert("password can be a max of 128 characters");
 //var passwordOptions = []
 // Function to prompt user for password options
 function getPasswordOptions() {
-  var passwordOptions = [];
   // Variable to store length of password from user input
   length = parseInt(
     prompt("How many characters would you like your password to contain?")
   );
 
   // booleans to store answers from the participant
-  passwordOptions.includeSpecialCharacter = confirm(
-    "Do you want to include a special character?"
-  );
+  var specialcharacter = confirm("Do you want to include a special character?");
 
-  passwordOptions.includeUppercaseCharacter = confirm(
-    "Do you want uppercase letters?"
-  );
+  var uppercase = confirm("Do you want uppercase letters?");
 
-  passwordOptions.includelowercaseCharacter = confirm(
-    "Do you want lowercase letters?"
-  );
-  passwordOptions.includeNumericCharacters = confirm(
-    "Do you want numbers in your password?"
-  );
+  var lowercaseCharacter = confirm("Do you want lowercase letters?");
+  var NumericCharacters = confirm("Do you want numbers in your password?");
 
   // Conditional statement to check if password length is a number as well as greater than 8 and less than 128
-  if (
-    Number.isInteger(passwordOptions.length) &&
-    passwordOptions.length >= 8 &&
-    passwordOptions.length <= 128
-  ) {
+  if (Number.isInteger(length) && length >= 8 && length <= 128) {
+    var passwordOptions = {
+      length: length,
+      specialcharacter: specialcharacter,
+      upperCasedCharacters: uppercase,
+      lowercaseCharacter: lowercaseCharacter,
+      numericCharacters: NumericCharacters,
+    };
   } else {
     alert("Password does not meet requirements");
+    return;
   }
-  console.log("passwordOptions", passwordOptions);
+
   return passwordOptions;
 }
 
