@@ -154,12 +154,16 @@ function generatePassword() {
     }
     if (options.lowerCasedCharacters) {
       for (var i = 0; i < lowerCasedCharacters.length; i++);
+      {
       availableCharacterTypes.push(lowerCasedCharacters[i]);
     }
+  }
     if (options.numericCharacters) {
       for (var i = 0; i < numericCharacters.length; i++);
+      {
       availableCharacterTypes.push(numericCharacters[i]);
     }
+  }
     // var availableCharacterTypes = [
     //  specialCharacters
     //  numericCharacters
