@@ -119,19 +119,16 @@ function getPasswordOptions() {
     };
   } else {
     alert("Password does not meet requirements");
-
-    return passwordOptions;
   }
+  return passwordOptions;
 }
 function getRandomElementfromArray(arr) {
-  var arrayKey = Math.floor(Math.random() * numericCharacters.length);
+  var arrayKey = Math.floor(Math.random() * arr.length + 1);
   return arr[arrayKey];
 }
 //function getRandomElement(arr) {
 //using equation to pull random characters from arrays and calling return of passwordOptions
-//var arrayKey = Math.floor(Math.random() * arr.length + 1);
 //return arrayKey;
-//}
 // Function to generate password with user input
 function generatePassword() {
   var password = "";
@@ -152,44 +149,45 @@ function generatePassword() {
     {
       availableCharacterTypes.push(upperCasedCharacters[i]);
     }
-    if (options.lowerCasedCharacters) {
-      for (var i = 0; i < lowerCasedCharacters.length; i++);
-      {
+  }
+  if (options.lowerCasedCharacters) {
+    for (var i = 0; i < lowerCasedCharacters.length; i++);
+    {
       availableCharacterTypes.push(lowerCasedCharacters[i]);
     }
   }
-    if (options.numericCharacters) {
-      for (var i = 0; i < numericCharacters.length; i++);
-      {
+  if (options.numericCharacters) {
+    for (var i = 0; i < numericCharacters.length; i++);
+    {
       availableCharacterTypes.push(numericCharacters[i]);
     }
   }
-    // var availableCharacterTypes = [
-    //  specialCharacters
-    //  numericCharacters
-    //  lowerCasedCharacters
-    //  upperCasedCharacters
-    // ];
+  // var availableCharacterTypes = [
+  //  specialCharacters
+  //  numericCharacters
+  //  lowerCasedCharacters
+  //  upperCasedCharacters
+  // ];
 
-    for (var i = 0; i <= options.length; i++) {
-      //  = '@'
-      password += getRandomElementfromArray(availableCharacterTypes);
-    }
-    console.log(password);
-    return password;
+  for (var i = 0; i <= options.length; i++) {
+    //  = '@'
+    password += getRandomElementfromArray(availableCharacterTypes);
   }
+  console.log(password);
+  return password;
+}
 
-  // Get references to the #generate element
-  var generateBtn = document.querySelector("#generate");
+// Get references to the #generate element
+var generateBtn = document.querySelector("#generate");
 
-  // Write password to the #password input
-  function writePassword() {
-    var password = generatePassword();
-    console.log(password);
-    var passwordText = document.querySelector("#password");
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  console.log(password);
+  var passwordText = document.querySelector("#password");
 
-    passwordText.value = password;
-  
+  passwordText.value = password;
+}
 
-  // Add event listener to generate button
-  generateBtn.addEventListener("click", writePassword);
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
