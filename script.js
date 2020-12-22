@@ -88,47 +88,62 @@ var upperCasedCharacters = [
   "Z",
 ];
 
-alert("Password must be a minimum of 8 characters");
-alert("password can be a max of 128 characters");
-//var passwordOptions = []
+alert(
+  "Password must be a minimum of 8 characters and maximum or 128 characters"
+);
+
 // Function to prompt user for password options
 function getPasswordOptions() {
   // Variable to store length of password from user input
-  length = parseInt(
+  var length = parseInt(
     prompt("How many characters would you like your password to contain?")
   );
 
   // booleans to store answers from the participant
-  var specialCharacters = confirm(
-    "Do you want to include a special character?"
+  var hasSpecialCharacters = confirm(
+    "click OK if you would like to include a special character"
   );
 
-  var upperCasedCharacters = confirm("Do you want uppercase letters?");
+  var hasUpperCasedCharacters = confirm(
+    "click OK if you would like to include an uppercase character"
+  );
 
-  var lowerCasedCharacters = confirm("Do you want lowercase letters?");
-  var numericCharacters = confirm("Do you want numbers in your password?");
-
-  // Conditional statement to check if password length is a number as well as greater than 8 and less than 128
-  if (Number.isInteger(length) && length >= 8 && length <= 128) {
-    var passwordOptions = {
-      length: length,
-      specialCharacters: specialCharacters,
-      upperCasedCharacters: upperCasedCharacters,
-      lowerCasedCharacters: lowerCasedCharacters,
-      numericCharacters: numericCharacters,
-    };
-  } else {
-    alert("Password does not meet requirements");
+  var hasLowerCasedCharacters = confirm(
+    "click OK if you would like to include a lowercasecharacter"
+  );
+  var hasNumericCharacters = confirm(
+    "click OK if you would like to include a numeric character"
+  );
+  //conditional statement to check if any special characetrs were selected.
+  if (
+    hasLowerCasedCharacters === false &&
+    hasUpperCasedCharacters === false &&
+    hasNumericCharacters === false &&
+    hasSpecialCharacters === false
+  ) {
+    alert("password must contain atleast one character");
   }
+  // Conditional statement to check if password length is a number as well as greater than 8 and less than 128
+
+  var passwordOptions = {
+    length: length,
+    hasSpecialCharacters: hasSpecialCharacters,
+    hasNumericCharacters: hasNumericCharacters,
+    hasLowerCasedCharacters: hasLowerCasedCharacters,
+    hasUpperCasedCharacters: hasUpperCasedCharacters,
+  };
+
   return passwordOptions;
-}
-function getRandomElementfromArray(arr) {
-  var arrayKey = Math.floor(Math.random() * arr.length + 1);
-  return arr[arrayKey];
 }
 //function getRandomElement(arr) {
 //using equation to pull random characters from arrays and calling return of passwordOptions
 //return arrayKey;
+function getRandomElementfromArray(arr) {
+  var arrayKey = Math.floor(Math.random() * arr.length + 1);
+  var randomElement = arr[arrayKey];
+  return randomElement;
+}
+
 // Function to generate password with user input
 function generatePassword() {
   var password = "";
