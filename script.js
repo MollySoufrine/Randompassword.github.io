@@ -135,61 +135,49 @@ function getPasswordOptions() {
 
   return passwordOptions;
 }
-//function getRandomElement(arr) {
-//using equation to pull random characters from arrays and calling return of passwordOptions
-//return arrayKey;
-function getRandomElementfromArray(arr) {
-  var arrayKey = Math.floor(Math.random() * arr.length + 1);
-  var randomElement = arr[arrayKey];
-  return randomElement;
+// Function for getting a random element from an array
+function getRandom(arr) {
+  var randIndex = Math.floor(Math.random() * arr.length);
+  var randElement = arr[randIndex];
+
+  return randElement;
 }
 
 // Function to generate password with user input
 function generatePassword() {
-  var password = "";
+  var result = [];
   var options = getPasswordOptions();
   console.log(options);
-  // i set this variable to an empty bracket so in the conditional i
-  //can check for multiple character types
-  var availableCharacterTypes = [];
-  if (options.specialCharacters) {
-    // availableCharacterTypes = [...availableCharacterTypes, ...specialCharacters];
-    for (var i = 0; i < specialCharacters.length; i++);
-    {
-      availableCharacterTypes.push(specialCharacters[i]);
-    }
-  }
-  if (options.upperCasedCharacters) {
-    for (var i = 0; i < upperCasedCharacters.length; i++);
-    {
-      availableCharacterTypes.push(upperCasedCharacters[i]);
-    }
-  }
-  if (options.lowerCasedCharacters) {
-    for (var i = 0; i < lowerCasedCharacters.length; i++);
-    {
-      availableCharacterTypes.push(lowerCasedCharacters[i]);
-    }
-  }
-  if (options.numericCharacters) {
-    for (var i = 0; i < numericCharacters.length; i++);
-    {
-      availableCharacterTypes.push(numericCharacters[i]);
-    }
-  }
-  // var availableCharacterTypes = [
-  //  specialCharacters
-  //  numericCharacters
-  //  lowerCasedCharacters
-  //  upperCasedCharacters
-  // ];
 
-  for (var i = 0; i <= options.length; i++) {
-    //  = '@'
-    password += getRandomElementfromArray(availableCharacterTypes);
+  var possibleCharacters = [];
+
+  var finalCharacters = [];
+
+  if (options.hasSpecialCharacters) {
+    possibleCharacters = possibleCharacters.concat(specialCharacters);
+    finalCharacters.push(getRandom(specialCharacters));
   }
-  console.log(password);
-  return password;
+  if (options.hasNumericCharacters) {
+    possibleCharacters = possibleCharacters.concat(numericCharacters);
+    finalCharacters.push(getRandom(numericCharacters));
+  }
+  if (options.hasLowerCasedCharacters) {
+    possibleCharacters = possibleCharacters.concat(lowerCasedCharacters);
+    finalCharacters.push(getRandom(lowerCasedCharacters));
+  }
+  if (options.hasUpperCasedCharacters) {
+    possibleCharacters = possibleCharacters.concat(upperCasedCharacters);
+    finalCharacters.push(getRandom(upperCasedCharacters));
+  }
+  for (var i = 0; i <= options.length; i++) {
+    var possibleCharacter = getRandom(possibleCharacters);
+  }
+  result.push(possibleCharacter);
+  // Mix in at least one of each guaranteed character in the password
+  for (var i = 0; i < finalCharacters.length; i++) {
+    result[i] = finalCharacters[i];
+  }
+  return result.join("");
 }
 
 // Get references to the #generate element
